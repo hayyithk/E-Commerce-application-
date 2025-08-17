@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: product-service
+  config:
+    import: optional:configserver:http://localhost:8888
+
+
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/product
+##    url: jdbc:postgresql://ep-broad-cell-a45xvgj7-pooler.us-east-1.aws.neon.tech/product?sslmode=require
+##    url: jdbc:mysql://localhost:3307/hayyith
+#    username: hayyith
+#    password: hayyith
+##    username: product_owner
+##    password: npg_p9TR8FZEszaK
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+##    database-platform: org.hibernate.dialect.MySQLDialect
+#    properties:
+#      hibernate:
+#        format_sql: true
+#
+##  h2:
+##    console:
+##      enabled: true
+##  datasource:
+##    url: jdbc:h2:mem:test
+##  jpa:
+##    show-sql: true
+##    hibernate:
+##      ddl-auto: create
+#
+#
+#server:
+#  port: 8081
+

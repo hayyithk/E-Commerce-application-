@@ -1,0 +1,82 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product
+#    url: jdbc:postgresql://ep-broad-cell-a45xvgj7-pooler.us-east-1.aws.neon.tech/product?sslmode=require
+#    url: jdbc:mysql://localhost:3307/hayyith
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+#    username: product_owner
+#    password: npg_p9TR8FZEszaK
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    virtual-host: ${RABBITMQ_VHOST:guest}
+    connection: 30000 #millisecond
+
+#  h2:
+#    console:
+#      enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:test
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create
+
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  tracing:
+    sampling:
+      probability: 1.0
+
+app:
+  message: "hello from product"
+
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+    logback:
+    rollingpolicy:
+      max-file-size: 5MB
+      max-history: 7
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://localhost:8761/eureka/"
+    register-with-eureka: true
+    fetch-registry: true
+
+#logging:
+#  level:
+#    root: TRACE
+#    com.ecommerce.user: TRACE
+#  #    Enable logos for specific package and Other Traces and debug are disabled
+#  file:
+#    name: logs/${spring.application.name}.log  #  spring boot interprets relative paths over here.(logs/app.log)
+#    #  using the application name using this property
+#    logback:
+#    rollingpolicy:
+#      max-file-size: 5MB
+#      max-history: 7 # Days

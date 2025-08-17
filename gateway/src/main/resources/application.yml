@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: optional:configserver:http://localhost:8888
+
+#
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: product-service               # it's unique among all your roots okay.
+##          uri: http://localhost:8081       # the address of the backend service that this route will forward request to.
+#          uri: lb://PRODUCT-SERVICE
+#          predicates:
+#            - Path=/api/products/**        # It matches if the path of the incoming HTTP request starts with slash API slash products.This is a wildcard(**) that matches any sequence of characters.
+#        - id: user-service
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/api/users/**
+#        - id: order-service
+#          uri: lb://ORDER-SERVICE
+#          predicates:
+#            - Path=/api/orders/**, /api/cart/**
+#        - id: eureka-server
+#          uri: http://local:8761
+#          predicates:
+#            - Path=/eureka/main
+#          filters:
+#            - setPath=/
+#        - id: eureka-server-static
+#          uri: http://localhost:8761
+#          predicates:
+#            - Path=/eureka/**
+## http://localhost:8080/apoi/users -? http://localhost:8082/api/users
+#
+##logging:
+##  level:
+##    root:
+##      org.springframework.cloud.gateway.route.RouteDefinitionLocator: INFO
+##      org.springframework.cloud.gateway: TRACE
+#
+## For Zipkin
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#  tracing:
+#    sampling:
+#      probability: 1.0
+#
+#
+#server:
+#  port: 8080
